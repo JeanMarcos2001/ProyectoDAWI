@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BiblioLectum - Catálogo Público</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8B6FF", // Pastel Purple
+                        "secondary": "#B8E0D2", // Pastel Secondary
+                        "background-light": "#F9FAFB", // Light mode main bg
+                        "background-dark": "#111827", // Dark mode main bg (using a neutral dark gray)
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1F2937", // Slightly lighter dark
+                        "border-light": "#E5E7EB",
+                        "border-dark": "#374151",
+                        "text-main": "#2D3748",
+                        "text-muted": "#718096",
+                        "alert": "#FFB7B2",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "12px",
+                        "lg": "16px",
+                        "xl": "24px",
+                        "2xl": "32px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
+                        'glow': '0 0 15px rgba(200, 182, 255, 0.5)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-text-main dark:text-gray-100 overflow-x-hidden selection:bg-primary selection:text-white">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-border-light dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 lg:px-12 transition-colors duration-300">
+    <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20 text-primary">
+            <span class="material-symbols-outlined">auto_stories</span>
+        </div>
+        <h1 class="text-xl font-bold tracking-tight text-text-main dark:text-white">BiblioLectum</h1>
+    </div>
+    <div class="flex items-center gap-3">
+        <button class="hidden sm:flex h-10 min-w-[100px] cursor-pointer items-center justify-center rounded-full border border-text-muted/30 bg-transparent px-4 text-sm font-semibold text-text-main dark:text-gray-200 transition hover:border-primary hover:text-primary">
+            Iniciar Sesión
+        </button>
+        <button class="flex h-10 min-w-[100px] cursor-pointer items-center justify-center rounded-full bg-primary px-4 text-sm font-bold text-white shadow-md transition hover:bg-[#b5a0f5] hover:shadow-glow">
+            Registrarse
+        </button>
+    </div>
+</header>
+<main class="flex flex-col items-center px-4 py-8 lg:px-12">
+    <div class="w-full max-w-7xl space-y-12">
+        <section class="relative overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark px-6 py-16 md:px-16 md:py-20 shadow-soft border border-border-light dark:border-border-dark">
+            <div class="absolute right-0 top-0 -mt-20 -mr-20 h-96 w-96 rounded-full bg-primary/20 blur-[100px]"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 h-80 w-80 rounded-full bg-secondary/20 blur-[100px]"></div>
+            <div class="relative z-10 flex flex-col items-center text-center space-y-8">
+                <div class="space-y-4 max-w-3xl">
+                    <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-tight text-text-main dark:text-white">
+                        Explora un universo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">historias</span>
+                    </h2>
+                    <p class="text-text-muted dark:text-gray-400 text-lg md:text-xl font-normal max-w-2xl mx-auto">
+                        Tu acceso ilimitado al conocimiento. Encuentra clásicos, best-sellers y material académico en un solo lugar.
+                    </p>
+                </div>
+                <div class="w-full max-w-2xl">
+                    <label class="group relative flex h-14 w-full items-center overflow-hidden rounded-full bg-white dark:bg-gray-800 border border-border-light dark:border-border-dark shadow-soft transition-all focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                        <div class="flex h-full w-14 items-center justify-center text-text-muted group-focus-within:text-primary">
+                            <span class="material-symbols-outlined">search</span>
+                        </div>
+                        <input class="h-full flex-1 bg-transparent px-2 text-base text-text-main dark:text-white placeholder-text-muted outline-none border-none focus:ring-0" placeholder="Busca por título, autor o ISBN..."/>
+                        <button class="m-1 h-11 rounded-full bg-primary px-8 text-sm font-bold text-white hover:bg-[#b5a0f5] transition-colors shadow-sm">
+                            Buscar
+                        </button>
+                    </label>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button class="group flex h-9 items-center gap-2 rounded-full border border-border-light dark:border-border-dark bg-white dark:bg-gray-800 px-4 pl-5 transition hover:border-primary hover:bg-primary/5">
+                        <span class="text-sm font-medium text-text-main dark:text-gray-200 group-hover:text-primary">Categoría</span>
+                        <span class="material-symbols-outlined text-text-muted text-[20px] group-hover:text-primary">expand_more</span>
+                    </button>
+                    <button class="group flex h-9 items-center gap-2 rounded-full border border-border-light dark:border-border-dark bg-white dark:bg-gray-800 px-4 pl-5 transition hover:border-primary hover:bg-primary/5">
+                        <span class="text-sm font-medium text-text-main dark:text-gray-200 group-hover:text-primary">Autor</span>
+                        <span class="material-symbols-outlined text-text-muted text-[20px] group-hover:text-primary">expand_more</span>
+                    </button>
+                    <button class="group flex h-9 items-center gap-2 rounded-full border border-border-light dark:border-border-dark bg-white dark:bg-gray-800 px-4 pl-5 transition hover:border-primary hover:bg-primary/5">
+                        <span class="text-sm font-medium text-text-main dark:text-gray-200 group-hover:text-primary">Año</span>
+                        <span class="material-symbols-outlined text-text-muted text-[20px] group-hover:text-primary">expand_more</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-border-light dark:border-border-dark pb-4">
+                <h3 class="text-2xl font-bold tracking-tight text-text-main dark:text-white pl-4 border-l-4 border-primary">Catálogo Público</h3>
+                <div class="flex gap-2">
+                    <span class="text-text-muted text-sm self-center mr-2 hidden sm:block">Mostrando 12 resultados</span>
+                    <button class="flex h-9 w-9 items-center justify-center rounded-lg bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-main dark:text-white hover:text-primary hover:border-primary transition shadow-sm">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </button>
+                    <button class="flex h-9 w-9 items-center justify-center rounded-lg bg-transparent text-text-muted hover:text-text-main dark:hover:text-white transition">
+                        <span class="material-symbols-outlined">view_list</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-10">
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft group-hover:ring-2 group-hover:ring-primary/50">
+                        <div class="absolute inset-0 bg-cover bg-center" data-alt="Portada abstracta del libro Cien Años de Soledad" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwb3tszevHlzV4T-n7ianTmP5xlE6WL8lz4UNhJIO3UHJcWwpbXcj-eKk1Q0lAIt7_BiDgZsTn6SbrM8UfpKRxmrtVIbUmv9WHERTYjzNH7bF0ZIWso4AV67uK4adDoakGPvNYfnzfwd10jAC9-qfmkLW2olK_bV7DVVyaPIXKQu2EFHZAMA3kV-sLfY9cNqSlSHpIx5IRA55Z0mYgHVEnzzemrF1no6mvzrmdeyFDEP4oci-GFKyLX8wIz7ODiIvocw3h-Sz6gLj_');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white shadow-lg opacity-0 transition-all duration-300 hover:scale-105 hover:bg-[#b5a0f5] group-hover:translate-y-0 group-hover:opacity-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-[#B8E0D2]/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-[#1F4D3C] shadow-sm">
+                                    Disponible
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">Cien Años de Soledad</h4>
+                        <p class="truncate text-sm text-text-muted">Gabriel García Márquez</p>
+                    </div>
+                </div>
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale-[0.8]" data-alt="Portada minimalista del libro 1984" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5iwmRPt3g0rr5lkvdD5wylPXSD_KjsbaXgGt7CyfcVEI0-uCyKlMh4bX05f9UsICitOx-44iNPF8fDetyv63TgWE7dPiQtROJ9bZu09_ltejhAl7OjOpClKf7Lq1uR3w2ri6d0Nd0EjvaN5tEt2N3FSaNPUxuyldxwAfy-OZapitR89McVC3dI85aJ5Sq2d6OwhJOaM8K-MIjEupFo3zzUgVvFdvEEahwOUcg2Dyew2zyppa-M9-YCC016mMXz-eglca4ZqXLuAJI');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-white px-5 py-2 text-sm font-bold text-gray-900 shadow-lg opacity-0 transition-all duration-300 hover:scale-105 group-hover:translate-y-0 group-hover:opacity-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-gray-200/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-gray-600 shadow-sm">
+                                    Agotado
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">1984</h4>
+                        <p class="truncate text-sm text-text-muted">George Orwell</p>
+                    </div>
+                </div>
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft">
+                        <div class="absolute inset-0 bg-cover bg-center" data-alt="Portada desértica del libro Dune" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIKdncuuSZHwYyA3SEtdawH1uk-BIyuJgFP2uT23nX9SPsGQ5Fj-h9DFbsvOD6XvydLNZrLnCXr-cLcClSHRJerhGjjJid3k1IF2jnpqEQqQWRgsN7DqmLyUABChr3FZ5PjAsmXhhj_DPr-nk7O9fkfUoNyTEoJeI7fJRv3u-PY8cn0HKfQI3lS8mRw9SjcqUCiUYy5tNNeUEiFP4_RmuIvJzUcel2t-JY6jiJDLym1VHtpeRpMkIk5pfZmgqvecDMKJLUOw4tDH-6');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-blue-300 px-5 py-2 text-sm font-bold text-blue-900 shadow-lg opacity-0 transition-all duration-300 hover:scale-105 hover:bg-blue-200 group-hover:translate-y-0 group-hover:opacity-100">
+                                Notificarme
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-blue-100/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-blue-600 shadow-sm">
+                                    Próximamente
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">Dune</h4>
+                        <p class="truncate text-sm text-text-muted">Frank Herbert</p>
+                    </div>
+                </div>
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft group-hover:ring-2 group-hover:ring-primary/50">
+                        <div class="absolute inset-0 bg-cover bg-center" data-alt="Ilustración de portada de El Principito" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBA3PhuyQL5on3wT4x5fZafAJsQ7xXE2GQ0m7veu9QUK-OvKoFD-7IwGXNuFKd4ZxHrmyWB2n0vkWrygxtVYb20rAVjXFtJrIZQrpx5nE4QdXEDJ_jVPzZNRKOKY8haGItv567nXoamA9K3xNZndIVNjYP4d6QtPaxLK64_umWZf6hDqVeP1v6Qe5k7jacZ4XvELJhV7EOFqDj39kKHvC9N3FrPUGhUg0UXwlD8gcwwOzVIOp9A0bOqByd9o8KKEfhFzezscg_JGDEk');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white shadow-lg opacity-0 transition-all duration-300 hover:scale-105 hover:bg-[#b5a0f5] group-hover:translate-y-0 group-hover:opacity-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-[#B8E0D2]/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-[#1F4D3C] shadow-sm">
+                                    Disponible
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">El Principito</h4>
+                        <p class="truncate text-sm text-text-muted">Antoine de Saint-Exupéry</p>
+                    </div>
+                </div>
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft group-hover:ring-2 group-hover:ring-primary/50">
+                        <div class="absolute inset-0 bg-cover bg-center" data-alt="Diseño abstracto de portada para Sapiens" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmw85JL4-GoIm7kKiSc4zidcz6EzhSKWH6qKpulMisEm1Jd-F3k5msNV78OyuUC3-6JJlGHiYoWnv4y0aZMRIq5mb5qHetWkcSWmE5ydUP_aoljisfhBFvX8iosXCjorksWWLPOt9BSSL1_9Yq6Bp8XbXqyq_KCVJG3F4fHIUcaXhNicWr5PzhZicAovcqgHTWGKvpF6H2jF2VldpgWfFSoWPQ-5riGiSZSxtz1BjhZG1xuwFfyjh8hUWSt8c9cuIcK6lE4OYdVqpY');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white shadow-lg opacity-0 transition-all duration-300 hover:scale-105 hover:bg-[#b5a0f5] group-hover:translate-y-0 group-hover:opacity-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-[#B8E0D2]/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-[#1F4D3C] shadow-sm">
+                                    Disponible
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">Sapiens</h4>
+                        <p class="truncate text-sm text-text-muted">Yuval Noah Harari</p>
+                    </div>
+                </div>
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800 shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-soft">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale-[0.8]" data-alt="Arte oscuro de fantasía para El Nombre del Viento" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAASlD_ZigJKmPX4-lTfK26gAhzvXxJmSDIuNjv8xDgjCDNGIxxjFmgAZtS9zMH1YbOtqiq5T-X525bnrHtvxVuJKBQZ85me5KCXtZ8QFleKtcqIX-_-A4Xxjn2bQ0e6mx0MYmt6X8v1rcAxpXR7bwPqmMLsLJ8IiqhAfiYtI8OeGYl9z1uZ2mWDb38VXfeATOZG2zNofnvUGbZEy34K3v-8G0wkkS0pfl5e10e-NcNJNSqDhzkRFppExhbMeWBVIxnrS3EDjmlFO8o');"></div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 backdrop-blur-[2px] group-hover:opacity-100">
+                            <button class="translate-y-4 rounded-full bg-white px-5 py-2 text-sm font-bold text-gray-900 shadow-lg opacity-0 transition-all duration-300 hover:scale-105 group-hover:translate-y-0 group-hover:opacity-100">
+                                Ver Detalles
+                            </button>
+                        </div>
+                        <div class="absolute right-2 top-2">
+<span class="inline-flex items-center rounded-md bg-gray-200/90 backdrop-blur-md px-2 py-1 text-[10px] uppercase tracking-wide font-bold text-gray-600 shadow-sm">
+                                    Agotado
+                                </span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="truncate text-base font-bold text-text-main dark:text-white group-hover:text-primary transition-colors">El Nombre del Viento</h4>
+                        <p class="truncate text-sm text-text-muted">Patrick Rothfuss</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+</body></html>
