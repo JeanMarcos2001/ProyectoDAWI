@@ -3,9 +3,9 @@ package com.biblioLectum.proyectoGrupo02.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data // crear getters y setters automáticamente
+@Data
 @Entity
-@Table(name = "Planes")
+@Table(name = "planes")
 public class Plan {
 
     @Id

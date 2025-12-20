@@ -17,6 +17,9 @@ public class Libro {
     private String autor;
     private String isbn;
     private String editorial;
+
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
     private Categoria idCategoria;
 
 

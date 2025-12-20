@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <head>
+    <meta charset="UTF-8">
+    <title>Listado de Planes - BiblioLectum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="container mt-5"> <h1 class="text-center mb-4">Planes de Suscripción</h1>
+
+    <form th:action="@{/planes}" method="get" class="relative group w-full md:w-auto">
+
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 group-focus-within:text-purple-action transition-colors">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+    </span>
+
+        <input type="text"
+               name="palabraClave"
+               th:value="${palabraClave}"
+               class="pl-10 pr-4 py-2.5 bg-white border-0 ring-1 ring-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-primary w-full md:w-72 shadow-sm transition-all placeholder:text-gray-400"
+               placeholder="Buscar plan..."
+               onchange="this.form.submit()">
+    </form>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Límite Libros</th>
+            <th>Días Préstamo</th>
+            <th>Costo Retraso</th>
+            <th>Precio Mensual</th>
+            <th>Descripción</th>
+            <th>¿Es Público?</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="plan : ${planes}">
+            <td th:text="${plan.id}">1</td>
+            <td th:text="${plan.nombre}">Plan Básico</td>
+            <td th:text="${plan.limiteLibros}">3</td>
+            <td th:text="${plan.diasPrestamo}">7</td>
+            <td th:text="${'S/ ' + plan.costoDiaRetraso}">S/ 2.50</td>
+            <td th:text="${'S/ ' + plan.precioMensual}">S/ 15.00</td>
+            <td th:text="${plan.descripcion}">Descripción...</td>
+
+            <td>
+                <span th:if="${plan.esPublico}" class="badge bg-success">Sí</span>
+                <span th:unless="${plan.esPublico}" class="badge bg-danger">No</span>
+            </td>
+            <td>
+                <a th:href="@{/planes/editar/{id}(id=${plan.id})}" class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+
+                <a th:href="@{/planes/eliminar/{id}(id=${plan.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Estás seguro de eliminar este plan?')">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <a th:href="@{/planes/nuevo}" class="btn btn-primary">
+            + Nuevo Plan
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
