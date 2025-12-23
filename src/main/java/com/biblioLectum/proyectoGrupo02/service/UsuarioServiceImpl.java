@@ -14,6 +14,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     private UsuarioRepository repositorio;
 
+    //LISTAMOS TODOS LOS USUARIOS
     @Override
     @Transactional(readOnly = true) // sirve para optimizar lectura de datos.
     public List<Usuario> listarTodos() {

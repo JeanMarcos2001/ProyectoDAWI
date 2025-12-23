@@ -41,29 +41,30 @@ public class Usuario {
     @JoinColumn(name = "IdPlan", nullable = false) // Nombre de la columna en tabla Usuarios
     private Plan plan;
 
+
     // DATOS DE LOGIN
     @Column(name = "Correo", unique = true)
     private String correo;
 
-    @Column(name = "contraseña")
+    @Column(name = "Password")
     private String password;
 
     // DATOS DE PERFIL, estos son opcionales
-    @Column(name = "direccion")
+    @Column(name = "Direccion")
     private String direccion;
 
-    @Column(name = "urlComprobanteDomicilio")
+    @Column(name = "UrlComprobanteDomicilio")
     private String urlComprobante;
 
-    @Column(name = "telefono")
+    @Column(name = "Telefono")
     private String telefono;
 
-    @Column(name = "fechaNacimiento")
+    @Column(name = "FechaNacimiento")
     private LocalDate fechaNacimiento;
 
-    @Column(name = "fotoUrl")
+    @Column(name = "FotoUrl")
     private String fotoUrl;
 
-    @Column(name = "genero") // Cuidado con la tilde en la BD
+    @Column(name = "Genero")
     private String genero;
 }

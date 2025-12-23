@@ -9,13 +9,15 @@ public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdRole")
+    @Column(name = "IdRol")
     private Long id;
 
     @Column(name = "NombreRol", nullable = false, unique = true)
     private String nombre;
 
+
     public Long getId() {
+
         return id;
     }
 
@@ -28,6 +30,7 @@ public class Rol {
     }
 
     public void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
 }

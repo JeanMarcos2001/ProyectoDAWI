@@ -1,54 +1,26 @@
 package com.biblioLectum.proyectoGrupo02.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "categorias")
 public class Categoria {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "IdCategoria")
+    private Long id;
+
+    @Column(name = "NombreCategoria", nullable = false)
     private String nombre;
+
+    @Column(name = "Descripcion")
     private String descripcion;
+
+    @Column(name = "Estado")
     private boolean estado;
 
-    public Categoria(int id, String nombre, String descripcion, boolean estado) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 }
