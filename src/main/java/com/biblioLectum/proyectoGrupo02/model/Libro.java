@@ -54,6 +54,9 @@ public class Libro {
     @Column(name = "FechaRegistro", updatable = false)
     private LocalDateTime fechaRegistro;
 
+    public Libro() {
+    }
+
     public Long getId() {
         return id;
     }
