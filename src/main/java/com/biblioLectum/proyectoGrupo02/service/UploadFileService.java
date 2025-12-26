@@ -12,10 +12,10 @@ import java.util.UUID;
 @Service
 public class UploadFileService {
 
-    private final String CARPETA = "images//";
+    private final String CARPETA = "images/";
 
     public String guardarImagen(MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
+        if (!file.isEmpty()) {
             String nombreUnico = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
             byte[] bytes = file.getBytes();
@@ -26,6 +26,7 @@ public class UploadFileService {
         }
         return "default.jpg";
     }
+
 
     public void eliminarImagen(String nombre){
         if(nombre != null && !nombre.equals("default.jpg")){
