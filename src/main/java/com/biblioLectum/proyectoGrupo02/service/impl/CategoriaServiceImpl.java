@@ -1,8 +1,8 @@
-package com.biblioLectum.proyectoGrupo02.service;
+package com.biblioLectum.proyectoGrupo02.service.impl;
 
 import com.biblioLectum.proyectoGrupo02.model.Categoria;
 import com.biblioLectum.proyectoGrupo02.repository.CategoriaRepository;
-import org.hibernate.annotations.SecondaryRow;
+import com.biblioLectum.proyectoGrupo02.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

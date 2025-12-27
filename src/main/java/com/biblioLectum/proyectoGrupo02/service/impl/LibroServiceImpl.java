@@ -1,17 +1,16 @@
-package com.biblioLectum.proyectoGrupo02.service;
+package com.biblioLectum.proyectoGrupo02.service.impl;
 
 import com.biblioLectum.proyectoGrupo02.model.Libro;
 import com.biblioLectum.proyectoGrupo02.repository.LibroRepository;
+import com.biblioLectum.proyectoGrupo02.service.ILibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @Service
-public class LibroServiceImpl implements ILibroService{
+public class LibroServiceImpl implements ILibroService {
 
     @Autowired
     private LibroRepository repo;

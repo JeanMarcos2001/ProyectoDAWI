@@ -1,7 +1,8 @@
-package com.biblioLectum.proyectoGrupo02.service;
+package com.biblioLectum.proyectoGrupo02.service.impl;
 
 import com.biblioLectum.proyectoGrupo02.model.Rol;
 import com.biblioLectum.proyectoGrupo02.repository.RolRepository;
+import com.biblioLectum.proyectoGrupo02.service.IRolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
